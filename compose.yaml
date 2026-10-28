@@ -1,7 +1,15 @@
+
 services:
   web:
     build: .
     container_name: docker-notes-container
     ports:
       - "8080:5000"
+    environment:
+      DATABASE_PATH: /data/notes.db
+    volumes:
+      - notes_data:/data
     restart: unless-stopped
+
+volumes:
+  notes_data:
