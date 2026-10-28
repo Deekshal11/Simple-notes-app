@@ -29,7 +29,28 @@ A simple web-based Notes application built with Flask, containerized using Docke
 - **Testing:** pytest
 - **Frontend:** HTML and CSS
 
+
 ## Architecture
+
+The project uses GitHub Actions for CI/CD, Docker Hub for image distribution, and AWS EC2 for hosting the containerized application.
+
+```mermaid
+flowchart TD
+    A[Developer] --> B[GitHub Repository]
+    B --> C[GitHub Actions]
+    C --> D[Automated Tests]
+    D --> E[Build Docker Image]
+    E --> F[Docker Hub]
+    F --> G[AWS EC2]
+    H[User Browser] --> G
+    G --> I[Docker Container]
+    I --> J[Gunicorn]
+    J --> K[Flask Notes App]
+    K --> L[(SQLite Database)]
+    L --- M[(Persistent Docker Volume)]
+    N[Docker Health Check] --> K
+```
+
 
 ### Application deployment flow
 
